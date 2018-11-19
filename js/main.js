@@ -11,4 +11,4 @@ function battonClick(formRow) {
     document.write(resultDegree.innerText = a);
 
 }
-//123
+//123123
