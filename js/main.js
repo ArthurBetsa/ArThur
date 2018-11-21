@@ -1,14 +1,13 @@
-
-
 /* 1) to count given degree*/
-function battonClick(formRow) {
+ function battonClick(formRow) {
     resultDegree = document.getElementById('resultDegree');
-    row = +formRow.givenData.value;
+    row = formRow.givenData.value;
     getdegree = +formRow.degree.value;
+    resultOutput = document.getElementById('functionsResult');
+    a = row + getdegree;
+    a = Math.pow(row, getdegree);
 
-    a = row+getdegree;
-    a = Math.pow(row,getdegree);
-    document.write(resultDegree.innerText = a);
+   resultOutput.innerHTML = a;
 
 }
 
@@ -16,6 +15,13 @@ function battonClick(formRow) {
 /* 2)  found number on Fibom  */
 
 /* 3)  count an array's elements summ */
+
+ function arrayCount(formRow){
+    row = formRow.givenData.value;
+     toArrey = row.split(', ');
+    resultOutput.innerHTML = Array.isArray(toArrey);
+}
+
 /* 4)  sort an array
        4.1) from smaller to bigger
        4.2) from bigger to smaller
