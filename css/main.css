@@ -1,6 +1,11 @@
 
+/* вывод результата*/
 .functionsResult
 {
     display: inline-block;
     background-color: rgba(142, 255, 52, 0.73);
+}
+/* кнопка создать другие кнопки */
+.createButton{
+    display: none;
 }

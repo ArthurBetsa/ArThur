@@ -5,28 +5,14 @@ function battonClick(formRow) {
     getdegree = formRow.degree.value;
     resultOutput = document.getElementById('functionsResult');
 
-
+    document.getElementById('createButton').style.display='inline';
 }
 
-namesFunctions = ['degreeCount', 'arrayCount', ];
+namesFunctions = ['degreeCount', 'arrayCount', 'bbb', 'aaa'];
 
-function createButton() {
-    for (i = 0; i <= namesFunctions.length; i++) {
-        var input = document.createElement('input');
-        input.type = "button";
-        input.value = namesFunctions[i];
-        //input.value = 'Кнопка';
-        //input.onclick = buttName();
-        input.setAttribute("onclick", "" + namesFunctions[i] + "()");
 
-        document.getElementById('createButtons').appendChild(input);
-        document.getElementById('createButtons').appendChild(br);
-    }
-    //buttonIn = '<input type="button" name="batton" id="batton" value="'+buttName+'" onclick="'+buttName+'()">';
-    //document.write(namesFunctions[0]);
-}
 
-degreeCount = function (formRow) {
+degreeCount = function () {
     a = Math.pow(row, getdegree);
     resultOutput.innerHTML = a;
 }
@@ -36,10 +22,10 @@ degreeCount = function (formRow) {
 
 /* 3)  count an array's elements summ */
 
-function arrayCount(formRow) {
-    row = formRow.givenData.value;
+function arrayCount() {
     toArrey = row.split(', ');
     resultOutput.innerHTML = Array.isArray(toArrey);
+
 }
 
 /* 4)  sort an array
@@ -62,5 +48,25 @@ function arrayCount(formRow) {
 /* 17) to put randomly array's elements */
 
 
+//Создание кнопок
+function createButton() {
 
 
+    for (i = 0; i < namesFunctions.length; i++) {
+        var input = document.createElement('input');
+        var br = document.createElement('br');
+        var br2 = document.createElement('br');
+        input.type = "button";
+        input.value = namesFunctions[i];
+        //input.onclick = buttName();
+        input.setAttribute("onclick", "" + namesFunctions[i] + "()");
+
+        document.getElementById('createButtons').appendChild(br);
+        document.getElementById('createButtons').appendChild(input);
+        document.getElementById('createButtons').appendChild(br2);
+    }
+
+    document.getElementById('createButton').style.display='none';
+    //buttonIn = '<input type="button" name="batton" id="batton" value="'+buttName+'" onclick="'+buttName+'()">';
+    //document.write(namesFunctions[0]);
+}
