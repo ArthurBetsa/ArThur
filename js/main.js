@@ -8,7 +8,7 @@ function battonClick(formRow) {
 
 }
 
-namesFunctions = ['degreeCount', 'arrayCount', null];
+namesFunctions = ['degreeCount', 'arrayCount', ];
 
 function createButton() {
     for (i = 0; i <= namesFunctions.length; i++) {
