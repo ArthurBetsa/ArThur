@@ -1,14 +1,34 @@
 /* 1) to count given degree*/
- function battonClick(formRow) {
+function battonClick(formRow) {
     resultDegree = document.getElementById('resultDegree');
     row = formRow.givenData.value;
-    getdegree = +formRow.degree.value;
+    getdegree = formRow.degree.value;
     resultOutput = document.getElementById('functionsResult');
-    a = row + getdegree;
+
+
+}
+
+namesFunctions = ['degreeCount', 'arrayCount'];
+
+function createButton() {
+    for (i = 0; i <= namesFunctions.length; i++) {
+        var input = document.createElement('input');
+        input.type = "button";
+        input.value = namesFunctions[i];
+        //input.value = 'Кнопка';
+        //input.onclick = buttName();
+        input.setAttribute("onclick", "" + namesFunctions[i] + "()");
+
+        document.getElementById('createButtons').appendChild(input);
+        document.getElementById('createButtons').appendChild(br);
+    }
+    //buttonIn = '<input type="button" name="batton" id="batton" value="'+buttName+'" onclick="'+buttName+'()">';
+    //document.write(namesFunctions[0]);
+}
+
+degreeCount = function (formRow) {
     a = Math.pow(row, getdegree);
-
-   resultOutput.innerHTML = a;
-
+    resultOutput.innerHTML = a;
 }
 
 
@@ -16,9 +36,9 @@
 
 /* 3)  count an array's elements summ */
 
- function arrayCount(formRow){
+function arrayCount(formRow) {
     row = formRow.givenData.value;
-     toArrey = row.split(', ');
+    toArrey = row.split(', ');
     resultOutput.innerHTML = Array.isArray(toArrey);
 }
 
@@ -40,5 +60,7 @@
        15.1) array's numbers with remainder
        16.1 without remainder*/
 /* 17) to put randomly array's elements */
+
+
 
 

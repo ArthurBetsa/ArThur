@@ -6,6 +6,7 @@
 		  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>task</title>
+	<link rel="stylesheet" type="text/css" href="css/main.css"/>
 	<script type="text/javascript" src="js/main.js">
 	</script>
 </head>
@@ -14,16 +15,18 @@
 <form action="" method="post" name="task" id="formRow">
 	<label for="givenData">Число</label>
 	<input type="text" name="givenData" id="givenData">
+	<label for="functionsResult">Результат:</label>
+	<p id="functionsResult" class="functionsResult"> </p>
 	<br />
 	<label for="degree">Степень</label>
 	<input type="text" name="degree" id="degree" >
 	<br />
-	<input type="button" name="batton" id="batton" value="Готово"
+	<input type="button" name="batton" id="batton" value="Отправить"
 		   onclick="battonClick (document.getElementById('formRow'))">
-</form>
-<br /><br />
-<label for="functionsResult">Результат:</label>
-<p id="functionsResult"> </p>
+	</form>
+<input type="button" name="batton" id="batton" value="Кнопки"
+	   onclick="createButton ()">
+<div class="createButtons" id="createButtons"></div>
 
 </body>
 </html>
