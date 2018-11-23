@@ -10,7 +10,7 @@
 	<script type="text/javascript" src="js/main.js">
 	</script>
 </head>
-<body>
+<body onload="createButton()">
 
 <form action="" method="post" name="task" id="formRow">
 	<label for="givenData">Число</label>
@@ -24,8 +24,8 @@
 	<input type="button" name="batton" id="batton" value="Отправить"
 		   onclick="battonClick (document.getElementById('formRow'))">
 	</form>
-<input class="createButton" id='createButton' type="button" name="batton" id="batton" value="Кнопки"
-	   onclick="createButton ()">
+<!--<input class="createButton" id='createButton' type="button" name="batton" id="batton" value="Кнопки"-->
+	   <!--onclick="createButton ()">-->
 <div class="createButtons" id="createButtons"></div>
 
 </body>

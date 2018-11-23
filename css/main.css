@@ -3,9 +3,12 @@
 .functionsResult
 {
     display: inline-block;
-    background-color: rgba(142, 255, 52, 0.73);
+    background-color: rgba(142, 255, 52, 0.63);
 }
 /* кнопка создать другие кнопки */
 .createButton{
+    display: none;
+}/* div создать другие кнопки */
+.createButtons{
     display: none;
 }
