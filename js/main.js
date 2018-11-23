@@ -10,8 +10,10 @@ function battonClick(formRow) {
 
     document.getElementById('createButtons').style.display = 'inline';
     row = row.split(',');
+    getdegree = getdegree.split(',');
     for (i = 0; i < row.length; i++) {
         row[i] = parseInt(row[i]);
+        getdegree[i] = parseInt(getdegree[i]);
     }
 }
 
@@ -117,6 +119,38 @@ maxDivider = function () {
 }
 namesFunctions.push('maxDivider');
 /* 11) to raise array's elements to given degree */
+
+arrayDegree = function () {
+    var number = row;
+    var degrees = getdegree;
+    var donned = [];
+    for(i=0;i<number.length;i++){
+        donned[i] = Math.pow(number[i], degrees[i]);
+
+    }
+    resultOutput.innerHTML = donned;
+
+}
+namesFunctions.push('arrayDegree');
+
+// что тут не так?
+/*            arrayDegree = function () {
+                var number = row;
+                var degrees = getdegree;
+
+
+                toDegree = function (numb, degree) {
+                    donned = Math.pow(numb, numb);
+                    return donned;
+                }
+                for (i = 0; i < number.length; i++) {
+                    powered[i] = toDegree(number[i], degrees[i]);
+
+                }
+            }
+*/
+
+
 /* 12) ??? specify */
 /* 13) is an array of palindrome*/
 /* 14) to show even numbers of an array */
