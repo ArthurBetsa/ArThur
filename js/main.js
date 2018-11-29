@@ -26,7 +26,7 @@ degreeCount = function () {
 }
 
 namesFunctions.push('1 degreeCount');
-/* 2)  found number on Fibom  */
+/* 2)  found number on Fibom  ?*/
 
 /* 3)  count an array's elements summ */
 
