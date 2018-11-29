@@ -32,6 +32,8 @@ function battonClick(formRow) {
         resultOutput.innerHTML = 'Ошибка!';
     }else {
         document.getElementById('createButtons').style.display = 'inline';
+        row = row||row[0]++;
+        getdegree = getdegree||getdegree[0]++;
     }
 
 
@@ -44,7 +46,7 @@ function battonClick(formRow) {
 
 }
 
-
+//is array
 let isArr = function () {
     toArrey = row;
     if (toArrey.length < 2) {
@@ -81,8 +83,15 @@ let fibon = function () {
 }
 namesFunctions.push('fibon');
 /* 3)  count an array's elements summ */
-
-
+var arrSumm = function () {
+    let i = 0;
+    let answer = 0;
+    for (i = 0; i < row.length; i++) {
+        answer = answer+row[i];
+    }
+    resultOutput.innerHTML = answer;
+}
+namesFunctions.push('arrSumm');
 /* 4)  sort an array
        4.1) from smaller to bigger
        4.2) from bigger to smaller
@@ -90,7 +99,7 @@ namesFunctions.push('fibon');
 //4.1
 let toBig = function () {
 
-    var numbers = row;
+    var numbers = row.slice();
     numbers.sort(function (a, b) {
         return a - b;
     });
@@ -267,8 +276,35 @@ evenNumbers = function () {
 }
 namesFunctions.push('evenNumbers');
 /* 15) remainder operator
-       15.1) array's numbers with remainder
-       16.1 without remainder*/
+       15.1) array's numbers with remainder*/
+
+var noRemainder = function () {
+    let i = 0;
+    let rem = 0;
+    let answer = [];
+    for(i=0;i<row.length;i++){
+        rem = row[i]%getdegree[0];
+        if(rem==0){
+            answer.push(row[i])
+        }
+    }
+    resultOutput.innerHTML = answer;
+}
+namesFunctions.push('noRemainder');
+      /* 16.1 without remainder*/
+var withRemainder = function () {
+    let i = 0;
+    let rem = 0;
+    let answer = [];
+    for(i=0;i<row.length;i++){
+        rem = row[i]%getdegree[0];
+        if(rem!==0){
+            answer.push(row[i])
+        }
+    }
+    resultOutput.innerHTML = answer;
+}
+namesFunctions.push('withRemainder');
 /* 17) to put randomly array's elements */
 
 
