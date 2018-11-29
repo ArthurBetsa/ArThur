@@ -1,6 +1,8 @@
 /* 1) to count given degree*/
 
-namesFunctions = ['degreeCount', 'arrayCount', 'toBig', 'toSmall', 'arithmeticMean'];
+var i = null;
+
+namesFunctions = [];
 
 function battonClick(formRow) {
     resultDegree = document.getElementById('resultDegree');
@@ -23,12 +25,12 @@ degreeCount = function () {
     resultOutput.innerHTML = a;
 }
 
-
+namesFunctions.push('1 degreeCount');
 /* 2)  found number on Fibom  */
 
 /* 3)  count an array's elements summ */
 
-function arrayCount() {
+var arrayCount  = function () {
     toArrey = row;
     if (toArrey.length < 2) {
         resultOutput.innerHTML = false;
@@ -37,13 +39,14 @@ function arrayCount() {
     }
 
 }
+namesFunctions.push('3 arrayCount');
 
 /* 4)  sort an array
        4.1) from smaller to bigger
        4.2) from bigger to smaller
  */
 //4.1
-toBig = function () {
+var toBig = function () {
 
     var numbers = row;
     numbers.sort(function (a, b) {
@@ -52,18 +55,20 @@ toBig = function () {
     resultOutput.innerHTML = numbers;
 
 }
+namesFunctions.push('4.1 toBig');
 //4.2
-toSmall = function () {
+var toSmall = function () {
 
-    var numbers = row;
+    var numbers = row.slice();
     numbers.sort(function (a, b) {
         return b - a;
     });
     resultOutput.innerHTML = numbers;
 
 }
+namesFunctions.push('4.2 toSmall');
 /* 5)  arithmetic mean */
-arithmeticMean = function () {
+var arithmeticMean = function () {
     var numbers = row;
     arMean = 0;
     for (i = 0; i < numbers.length; i++) {
@@ -72,8 +77,40 @@ arithmeticMean = function () {
     arMean = arMean / numbers.length;
     resultOutput.innerHTML = arMean;
 }
+namesFunctions.push('5 arithmeticMean');
 /* 6)  to count an amount repeat numbers of an array's elements*/
+// http://qaru.site/questions/49329/counting-the-occurrences-frequency-of-array-elements
+var repeatNumbers = function () {
+    var repeated = row.slice().sort();
+    var counter = [];
+    var count = 0;
+    var numb =[];
+    var result = [];
+    for (i = 0; i < repeated.length; i++) {
+        if (repeated[i] !== count) {
+            numb.push(repeated[i]);
+            counter.push(1);
+        } else {
+            counter[counter.length-1]++;
+        }
+                count = repeated[i];
+    }
+    for (i=0;i<numb.length;i++){
+        count = numb[i]+'('+counter[i]+')';
+        result.push(count);
+    }
+
+    resultOutput.innerHTML = result;
+    // resultOutput.innerHTML = repeated;
+}
+namesFunctions.push('6 repeatNumbers');
 /* 7)  implement the reverse function */
+
+var revFunction = function () {
+    var reversed = row.slice().reverse();
+    resultOutput.innerHTML = reversed;
+}
+namesFunctions.push('7 revFunction');
 /* 8)  to show odd numbers of an array */
 oddNumb = function () {
     var numbers = row;
@@ -90,9 +127,11 @@ oddNumb = function () {
     resultOutput.innerHTML = oddnumbers;
 
 }
-namesFunctions.push('oddNumb');
+namesFunctions.push('8 oddNumb');
 /* 9)  to find en element in an array and implement binar search */
+
 /* 10) to find maximum divider for all numbers of an array */
+/*
 maxDivider = function () {
     var numbers = row;
     var divNumbs = [];
@@ -118,20 +157,21 @@ maxDivider = function () {
     resultOutput.innerHTML = divNumbs;
 }
 namesFunctions.push('maxDivider');
+*/
 /* 11) to raise array's elements to given degree */
 
 arrayDegree = function () {
     var number = row;
     var degrees = getdegree;
     var donned = [];
-    for(i=0;i<number.length;i++){
-        donned[i] = Math.pow(number[i], degrees[i]);
+    for (i = 0; i < number.length; i++) {
+        donned[i] = Math.pow(number[i], degrees[0]);
 
     }
     resultOutput.innerHTML = donned;
 
 }
-namesFunctions.push('arrayDegree');
+namesFunctions.push('11 arrayDegree');
 
 // что тут не так?
 /*            arrayDegree = function () {
@@ -153,7 +193,37 @@ namesFunctions.push('arrayDegree');
 
 /* 12) ??? specify */
 /* 13) is an array of palindrome*/
+
+var palindr = function () {
+    var answer = null;
+    var reversed = row.slice().reverse();
+    for (i = 0; i < row.length; i++) {
+        if (reversed[i] != row[i]) {
+            answer = 'не палиндром';
+        } else {
+            answer = 'Палиндром';
+        }
+    }
+
+    resultOutput.innerHTML = answer;
+}
+namesFunctions.push('13 palindr');
 /* 14) to show even numbers of an array */
+evenNumbers = function () {
+    var evenNumbs = [];
+    for (i = 0; i <= row.length; i++) {
+        var evNb = row[i] % 2;
+
+        if (evNb == 0) {
+            evenNumbs.push(row[i]);
+        } else {
+            continue
+        }
+    }
+
+    resultOutput.innerHTML = evenNumbs;
+}
+namesFunctions.push('14 evenNumbers');
 /* 15) remainder operator
        15.1) array's numbers with remainder
        16.1 without remainder*/
@@ -171,7 +241,7 @@ function createButton() {
         input.type = "button";
         input.value = namesFunctions[i];
         //input.onclick = buttName();
-        input.setAttribute("onclick", "" + namesFunctions[i] + "()");
+        input.setAttribute("onclick", namesFunctions[i] + "()");
 
         document.getElementById('createButtons').appendChild(br);
         document.getElementById('createButtons').appendChild(input);
