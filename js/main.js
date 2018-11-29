@@ -1,36 +1,51 @@
 /* 1) to count given degree*/
 
-var i = null;
+ i = 0;
+ j = 0;
+ row = [];
+ getdegree = [];
 
-namesFunctions = [];
+ namesFunctions = [];
 
 function battonClick(formRow) {
-    resultDegree = document.getElementById('resultDegree');
-    row = formRow.givenData.value;
-    getdegree = formRow.degree.value;
-    resultOutput = document.getElementById('functionsResult');
 
-    document.getElementById('createButtons').style.display = 'inline';
-    row = row.split(',');
-    getdegree = getdegree.split(',');
+    row = formRow.givenData.value.split(',');
+    getdegree = formRow.degree.value.split(',');
+
+    let check = false;
+    let check2 = false;
+
+    for (i=0;i<row.length;i++){
+        if (isNaN(row[i])) {
+            check = true;
+        }
+    }
+    for (j=0;j<getdegree.length;j++){
+        if (isNaN(getdegree[j])) {
+            check = true;
+        }
+    }
+
+    if (check == true){
+        alert( "Введите пожалуйста число" );
+        document.getElementById('createButtons').style.display = 'none';
+        resultOutput.innerHTML = 'Ошибка!';
+    }else {
+        document.getElementById('createButtons').style.display = 'inline';
+    }
+
+
     for (i = 0; i < row.length; i++) {
         row[i] = parseInt(row[i]);
         getdegree[i] = parseInt(getdegree[i]);
     }
+    //
+    resultOutput = document.getElementById('functionsResult');
+
 }
 
 
-degreeCount = function () {
-    a = Math.pow(row, getdegree);
-    resultOutput.innerHTML = a;
-}
-
-namesFunctions.push('1 degreeCount');
-/* 2)  found number on Fibom  ?*/
-
-/* 3)  count an array's elements summ */
-
-var arrayCount  = function () {
+let isArr = function () {
     toArrey = row;
     if (toArrey.length < 2) {
         resultOutput.innerHTML = false;
@@ -39,14 +54,41 @@ var arrayCount  = function () {
     }
 
 }
-namesFunctions.push('3 arrayCount');
+namesFunctions.push('isArr');
+/* 1) count a numb in a given degree*/
+degreeCount = function () {
+    let a = Math.pow(row[0] || 1, getdegree[0] || 1);
+    resultOutput.innerHTML = a;
+}
+
+namesFunctions.push('degreeCount');
+/* 2)  found number on Fibom  ?*/
+let fibon = function () {
+    let step1 = row[0] || 1;
+    let step2 = row[1] || 1;
+    let length = getdegree[0] || 3;
+    let a = step1;
+    let b = step2;
+    let n = length;
+    let result = [];
+    for (i = 0; i < n; i++) {
+        let c = a + b;
+        a = b;
+        b = c;
+        result.push(c);
+    }
+    resultOutput.innerHTML = result;
+}
+namesFunctions.push('fibon');
+/* 3)  count an array's elements summ */
+
 
 /* 4)  sort an array
        4.1) from smaller to bigger
        4.2) from bigger to smaller
  */
 //4.1
-var toBig = function () {
+let toBig = function () {
 
     var numbers = row;
     numbers.sort(function (a, b) {
@@ -55,21 +97,21 @@ var toBig = function () {
     resultOutput.innerHTML = numbers;
 
 }
-namesFunctions.push('4.1 toBig');
+namesFunctions.push('toBig');
 //4.2
-var toSmall = function () {
+let toSmall = function () {
 
-    var numbers = row.slice();
+    let numbers = row.slice();
     numbers.sort(function (a, b) {
         return b - a;
     });
     resultOutput.innerHTML = numbers;
 
 }
-namesFunctions.push('4.2 toSmall');
+namesFunctions.push('toSmall');
 /* 5)  arithmetic mean */
-var arithmeticMean = function () {
-    var numbers = row;
+let arithmeticMean = function () {
+    let numbers = row;
     arMean = 0;
     for (i = 0; i < numbers.length; i++) {
         arMean = numbers[i] + arMean;
@@ -77,40 +119,40 @@ var arithmeticMean = function () {
     arMean = arMean / numbers.length;
     resultOutput.innerHTML = arMean;
 }
-namesFunctions.push('5 arithmeticMean');
+namesFunctions.push('arithmeticMean');
 /* 6)  to count an amount repeat numbers of an array's elements*/
 // http://qaru.site/questions/49329/counting-the-occurrences-frequency-of-array-elements
-var repeatNumbers = function () {
-    var repeated = row.slice().sort();
-    var counter = [];
-    var count = 0;
-    var numb =[];
-    var result = [];
+let repeatNumbers = function () {
+    let repeated = row.slice().sort();
+    let counter = [];
+    let count = 0;
+    let numb = [];
+    let result = [];
     for (i = 0; i < repeated.length; i++) {
         if (repeated[i] !== count) {
             numb.push(repeated[i]);
             counter.push(1);
         } else {
-            counter[counter.length-1]++;
+            counter[counter.length - 1]++;
         }
-                count = repeated[i];
+        count = repeated[i];
     }
-    for (i=0;i<numb.length;i++){
-        count = numb[i]+'('+counter[i]+')';
+    for (i = 0; i < numb.length; i++) {
+        count = numb[i] + '(' + counter[i] + ')';
         result.push(count);
     }
 
     resultOutput.innerHTML = result;
     // resultOutput.innerHTML = repeated;
 }
-namesFunctions.push('6 repeatNumbers');
+namesFunctions.push('repeatNumbers');
 /* 7)  implement the reverse function */
 
 var revFunction = function () {
     var reversed = row.slice().reverse();
     resultOutput.innerHTML = reversed;
 }
-namesFunctions.push('7 revFunction');
+namesFunctions.push('revFunction');
 /* 8)  to show odd numbers of an array */
 oddNumb = function () {
     var numbers = row;
@@ -127,7 +169,7 @@ oddNumb = function () {
     resultOutput.innerHTML = oddnumbers;
 
 }
-namesFunctions.push('8 oddNumb');
+namesFunctions.push('oddNumb');
 /* 9)  to find en element in an array and implement binar search */
 
 /* 10) to find maximum divider for all numbers of an array */
@@ -165,13 +207,13 @@ arrayDegree = function () {
     var degrees = getdegree;
     var donned = [];
     for (i = 0; i < number.length; i++) {
-        donned[i] = Math.pow(number[i], degrees[0]);
+        donned[i] = Math.pow(number[i], degrees[0]||0);
 
     }
     resultOutput.innerHTML = donned;
 
 }
-namesFunctions.push('11 arrayDegree');
+namesFunctions.push('arrayDegree');
 
 // что тут не так?
 /*            arrayDegree = function () {
@@ -207,7 +249,7 @@ var palindr = function () {
 
     resultOutput.innerHTML = answer;
 }
-namesFunctions.push('13 palindr');
+namesFunctions.push('palindr');
 /* 14) to show even numbers of an array */
 evenNumbers = function () {
     var evenNumbs = [];
@@ -223,7 +265,7 @@ evenNumbers = function () {
 
     resultOutput.innerHTML = evenNumbs;
 }
-namesFunctions.push('14 evenNumbers');
+namesFunctions.push('evenNumbers');
 /* 15) remainder operator
        15.1) array's numbers with remainder
        16.1 without remainder*/
@@ -232,14 +274,14 @@ namesFunctions.push('14 evenNumbers');
 
 //Создание кнопок
 function createButton() {
-
+    var i = 0;
 
     for (i = 0; i < namesFunctions.length; i++) {
         var input = document.createElement('input');
         var br = document.createElement('br');
         var br2 = document.createElement('br');
         input.type = "button";
-        input.value = namesFunctions[i];
+        input.value = i + " " + namesFunctions[i];
         //input.onclick = buttName();
         input.setAttribute("onclick", namesFunctions[i] + "()");
 
