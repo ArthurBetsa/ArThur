@@ -127,7 +127,7 @@ let toSmall = function () {
 };
 namesFunctions.push('toSmall');
 
-/* 5)  arithmetic mean */
+/* 5)  arithmetic mean  */
 let arithmeticMean = function () {
   let numbers = row;
   let i;
