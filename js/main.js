@@ -118,7 +118,12 @@ let toSmall = function () {
 
 }
 namesFunctions.push('toSmall');
+<<<<<<< Updated upstream
 /* 5)  arithmetic mean */
+=======
+
+/* 5)  arithmetic mean 2 */
+>>>>>>> Stashed changes
 let arithmeticMean = function () {
     let numbers = row;
     arMean = 0;
