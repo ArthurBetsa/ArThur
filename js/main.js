@@ -1,24 +1,28 @@
 /* 1) to count given degree*/
 
-row = [];
-getdegree = [];
-
-namesFunctions = [];
+let row = [];
+let getdegree = [];
+let notANaN = [];
+let namesFunctions = [];
 
 function battonClick(formRow) {
-  let i;
 
+  resultOutput = document.getElementById('functionsResult');
+
+  //get data from input
   row = formRow.givenData.value.split(',');
   getdegree = formRow.degree.value.split(',');
+  let i = 0;
 
+  //check for wrong data
   let check = false;
 
-
-  for (i = 0; i < row.length; i++) {
-    if (isNaN(row[i])) {
+  row.map(function (val) {
+    if (isNaN(val)) {
       check = true;
     }
-  }
+  });
+
   for (j = 0; j < getdegree.length; j++) {
     if (isNaN(getdegree[j])) {
       check = true;
@@ -36,14 +40,27 @@ function battonClick(formRow) {
   }
 
 
+  // filters
+
+  // val to a num
   for (i = 0; i < row.length; i++) {
     row[i] = parseInt(row[i]);
     getdegree[i] = parseInt(getdegree[i]);
   }
+  // remoove NaN
+  row = row.filter(Number);
+  getdegree = getdegree.filter(Number);
 
-  resultOutput = document.getElementById('functionsResult');
 
 }
+
+//test data
+
+let testFunc = function () {
+  //let summarr = row.filter(val => isNaN(val));
+  resultOutput.innerHTML = notANaN;
+}
+namesFunctions.push('testFunc');
 
 //is array
 let isArr = function () {
@@ -55,15 +72,9 @@ let isArr = function () {
   }
 
 }
-
-var testFunc;
-testFunc = function () {
-  let summarr = row.filter(val => val % 2 !== 0);
-  resultOutput.innerHTML = summarr;
-}
-
-
 namesFunctions.push('isArr');
+
+
 /* 1) count a numb in a given degree*/
 degreeCount = function () {
   let a = Math.pow(row[0] || 1, getdegree[0] || 1);
@@ -90,9 +101,10 @@ let fibon = function () {
   resultOutput.innerHTML = result;
 }
 namesFunctions.push('fibon');
+
 /* 3)  count an array's elements summ */
 var arrSumm = function () {
-  let i = 0;
+  let i;
   let answer = 0;
   for (i = 0; i < row.length; i++) {
     answer = answer + row[i];
@@ -269,13 +281,14 @@ var noRemainder = function () {
   resultOutput.innerHTML = answer;
 }
 namesFunctions.push('noRemainder');
+
 /* 16.1 without remainder*/
 
 
 var withRemainder = function () {
 
-  let answer = row.filter(val => val % getdegree[0] !== 0)
-  resultOutput.innerHTML = answer;
+  let answer = row.filter(val => val % getdegree[0] !== 0);
+  resultOutput.innerText = answer;
 }
 namesFunctions.push('withRemainder');
 /* 17) to put randomly array's elements */
