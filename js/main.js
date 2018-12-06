@@ -202,28 +202,7 @@ namesFunctions.push('oddNumb');
 /* 10) to find maximum divider for all numbers of an array */
 /*
 maxDivider = function () {
-    var numbers = row;
-    var divNumbs = [];
-    var divN = 0;
-    var dividC = 0;
-    for (i = 0; i < numbers.length; i++) {
-        divN = numbers[i] - 1;
-        for (j = divN; j >= 1; j--) {
 
-            dividC = numbers[i] / divN;
-
-            if (dividC == 2) {
-                divNumbs[i] = divN;
-                break;
-            } else {
-                divNumbs[i] = numbers[i];
-            }
-            divN = divN - 1;
-        }
-
-    }
-    console.log(divNumbs);
-    resultOutput.innerHTML = divNumbs;
 }
 namesFunctions.push('maxDivider');
 */
@@ -242,9 +221,9 @@ namesFunctions.push('arrayDegree');
 /* 13) is an array of palindrome*/
 
 var palindr = function () {
-  var answer = null;
+  let answer;
   let i;
-  var reversed = row.slice().reverse();
+  let reversed = row.slice().reverse();
   for (i = 0; i < row.length; i++) {
     if (reversed[i] != row[i]) {
       answer = 'не палиндром';
@@ -311,8 +290,4 @@ function createButton() {
     document.getElementById('createButtons').appendChild(input);
     document.getElementById('createButtons').appendChild(br2);
   }
-
-  //document.getElementById('createButton').style.display = 'none';
-  //buttonIn = '<input type="button" name="batton" id="batton" value="'+buttName+'" onclick="'+buttName+'()">';
-  //document.write(namesFunctions[0]);
 }
