@@ -1,0 +1,23 @@
+.button{
+        text-decoration:none;
+        text-align:center;
+        padding:11px 32px;
+        border:none;
+
+        font:27px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+        font-weight:bold;
+        color:#ffffff;
+        background-color:#3bc740;
+        background-image: -moz-linear-gradient(top, #3bc740 0%, #7da519 100%);
+        background-image: -webkit-linear-gradient(top, #3bc740 0%, #7da519 100%);
+        background-image: -o-linear-gradient(top, #3bc740 0%, #7da519 100%);
+        background-image: -ms-linear-gradient(top, #3bc740 0% ,#7da519 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7da519', endColorstr='#7da519',GradientType=0 );
+        background-image: linear-gradient(top, #3bc740 0% ,#7da519 100%);
+        -webkit-box-shadow:0px 0px 7px #bababa, inset 0px 0px 1px #ffffff;
+        -moz-box-shadow: 0px 0px 7px #bababa,  inset 0px 0px 1px #ffffff;
+        box-shadow:0px 0px 7px #bababa, inset 0px 0px 1px #ffffff;
+
+        text-shadow: 0px 0px 2px #ffffff;
+        filter: dropshadow(color=#ffffff, offx=0, offy=0);
+        }
