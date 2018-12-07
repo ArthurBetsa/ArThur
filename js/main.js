@@ -281,6 +281,8 @@ function createButton() {
     let input = document.createElement('input');
     let br = document.createElement('br');
     let br2 = document.createElement('br');
+    //input.setAttribute("class", "aClassName" );
+    input.className = 'button';
     input.type = "button";
     input.value = i + " " + namesFunctions[i];
     //input.onclick = buttName();
@@ -291,4 +293,3 @@ function createButton() {
     document.getElementById('createButtons').appendChild(br2);
   }
 }
- //123 fsdfdsfsd

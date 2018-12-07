@@ -12,3 +12,7 @@
 .createButtons{
     display: none;
 }
+.createButtons{
+    width: 300px;
+    background-color: #00adee;
+}
