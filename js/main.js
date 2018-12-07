@@ -31,10 +31,11 @@ function battonClick(formRow) {
 
   if (check === true) {
     alert("Введите пожалуйста число");
-    document.getElementById("createButtons").style.display = "none";
+
+    document.getElementById("createButtons").className = "buttonError";
     resultOutput.innerHTML = "Ошибка!";
   } else {
-    document.getElementById('createButtons').style.display = 'inline';
+    document.getElementById('createButtons').className = "send";
     row = row || row[0]++;
     getdegree = getdegree || getdegree[0]++;
   }
@@ -281,7 +282,7 @@ function createButton() {
     let input = document.createElement('input');
     let br = document.createElement('br');
     let br2 = document.createElement('br');
-    //input.setAttribute("class", "aClassName" );
+    //input.setAttribute("class", "button");
     input.className = 'button';
     input.type = "button";
     input.value = i + " " + namesFunctions[i];
@@ -293,3 +294,4 @@ function createButton() {
     document.getElementById('createButtons').appendChild(br2);
   }
 }
+ //123 fsdfdsfsd
