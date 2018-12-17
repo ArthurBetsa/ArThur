@@ -67,7 +67,7 @@ let resultOuter = function (nameObj) {
 }
 
 
-//is array
+//is arrays
 let isArr = function () {
   battonClick(formRow);
   let out = resultOuter(isArrOb);
