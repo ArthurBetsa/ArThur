@@ -1,32 +1,60 @@
-<!doctype html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport"
-		  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>task</title>
-	<link rel="stylesheet" type="text/css" href="css/main.css"/>
-	<script type="text/javascript" src="js/main.js">
-	</script>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="description" />
+	<meta name="keywords" content="keywords" />
+	<meta name="author" content="author" />
+	<link rel="stylesheet" type="text/css" href="css/patern.css" media="screen" />
+	<script type="text/javascript" src="js/buttons.js"></script>
+
+
+	<title>Task</title>
 </head>
 <body onload="createButton()">
+<div class="container">
+	<div class="main">
+		<div class="header">
+			<div class="title">
+				<div class="formEdit">
+					<form action="" method="post" name="task" id="formRow">
+						<label class="rowLabel" for="givenData"> Введите число или масив:</label>
+						<input class="inputDataOne" type="text" name="givenData" id="givenData" autocomplete="off">
+						<label class="degreeLabel" for="degree">Дополнительные данные:</label>
+						<input class="inputDataDegree" type="text" name="degree" id="degree"autocomplete="off">
+						<input class="buttonR" type="button" name="inputSend" id="inputSend" value="Отправить"
+							   onclick="battonClick (document.getElementById('formRow'))">
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="content">
+			<div id = 'buttons'></div>
+			<!--<div class="item">-->
+			<!--<h1 class="outTest" id="functionsResult">There will be outputs</h1>-->
+			<!--<div class="descr">describing</div>-->
+			<!--<p>There will be outputs</p>-->
 
-<form action="" method="post" name="task" id="formRow">
-	<label for="givenData">Число</label>
-	<input type="text" name="givenData" id="givenData">
-	<label for="functionsResult">Результат:</label>
-	<p id="functionsResult" class="functionsResult"> </p>
-	<br />
-	<label for="degree">Степень</label>
-	<input type="text" name="degree" id="degree" >
-	<br />
-	<input type="button" name="batton" id="batton" value="Отправить"
-		   onclick="battonClick (document.getElementById('formRow'))">
-	</form>
-<!--<input class="createButton" id='createButton' type="button" name="batton" id="batton" value="Кнопки"-->
-	   <!--onclick="createButton ()">-->
-<div class="createButtons" id="createButtons"></div>
-
+			<!--</div>-->
+		</div>
+		<div class="sidenav">
+			<div id="buttOut" class="buttOut")">
+		</div>
+		<!--<ul>-->
+		<!--<li><a href="#">pellentesque</a></li>-->
+		<!--<li><a href="#">sem justo</a></li>-->
+		<!--<li><a href="#">sociis natoque</a></li>-->
+		<!--<li><a href="#">convallis</a></li>-->
+		<!--</ul>-->
+	</div>
+	<div class="clearer"></div>
+</div>
+<div class="footer">
+	<span class="left"><a href="#">Website.com</a>.</span>
+	<span class="right"></span>
+	<center></center>
+	<div class="clearer"></div>
+</div>
+</div>
 </body>
 </html>

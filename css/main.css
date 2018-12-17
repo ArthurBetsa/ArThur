@@ -1,14 +1,470 @@
-
-/* вывод результата*/
-.functionsResult
-{
-    display: inline-block;
-    background-color: rgba(142, 255, 52, 0.63);
+.inner_copy, .inner_copy a {
+    border: 0;
+    float: right;
+    background: #fff;
+    color: #f00;
+    width: 50%;
+    line-height: 10px;
+    font-size: 10px;
+    margin: -220% 0 0 0;
+    overflow: hidden;
+    padding: 0
 }
-/* кнопка создать другие кнопки */
-.createButton{
-    display: none;
-}/* div создать другие кнопки */
-.createButtons{
-    display: none;
+
+* {
+    margin: 0;
+    padding: 0
+}
+
+a {
+    color: #36C
+}
+
+a:hover {
+    color: #06F
+}
+
+body {
+    /*background: #EEE url(../img/bg.gif);*/
+    background: #EEE;
+    color: #444;
+    font: normal 62.5% "Lucida Sans Unicode", sans-serif;
+    margin: 0
+}
+
+input {
+    color: #555;
+    font: normal 1.1em "Lucida Sans Unicode", sans-serif
+}
+
+p, cite, code, ul {
+    font-size: 1.2em;
+    padding-bottom: 1.2em
+}
+
+h1 {
+    font-size: 1.4em;
+    margin-bottom: 4px
+}
+
+code {
+    /*background: url(../img/bgcode.gif);*/
+    border: 1px solid #F0F0F0;
+    border-left: 6px solid #39F;
+    color: #555;
+    display: block;
+    font: normal 1.1em "Lucida Sans Unicode", serif;
+    margin-bottom: 12px;
+    padding: 8px 10px;
+    white-space: pre
+}
+
+cite {
+    /*background: url(../img/quote.gif) no-repeat;*/
+    color: #666;
+    display: block;
+    font: normal 1.3em "Lucida Sans Unicode", serif;
+    padding-left: 28px
+}
+
+h1, h2, h3 {
+    color: #367EA6;
+    padding-top: 6px
+}
+
+/* misc */
+.clearer {
+    clear: both
+}
+
+/* structure */
+.container {
+    /*background: url(../img/bgcontainer.gif) repeat-y;*/
+    margin: 0 auto;
+    padding-bottom: 6px;
+    width: 767px;
+    border-bottom: 1px solid #DDD
+}
+
+.header {
+    margin-left: -250px;
+    position: fixed;
+    margin-top: 15%;
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(10, 11, 11, 0.86)), to(rgba(86, 86, 86, 0.82)));
+}
+
+/* title */
+.title h1 {
+    color: #FFF;
+    font: normal 3em Verdana, sans-serif;
+    height: 150px;
+    line-height: 150px;
+    margin-bottom: 8px;
+    text-align: center
+}
+
+/* navigation */
+.navigation {
+    margin-bottom: 4px
+}
+
+.navigation a {
+    background-color: #4A91C3;
+    color: #FFF;
+    float: left;
+    font: bold 1.2em "Trebuchet MS", sans-serif;
+    padding: 8px 0;
+    width: 19%;
+    border-right: 1px solid #FFF;
+    text-align: center;
+    text-decoration: none
+}
+
+.navigation a:hover {
+    background-color: #000;
+    color: #FFF
+}
+
+/* main */
+.main {
+    clear: both;
+    padding: 8px 18px
+}
+
+/* main left */
+.sidenav h1, .sidenav ul {
+    padding-left: 12px
+}
+
+.sidenav {
+    float: left;
+    width: 200px
+}
+
+.sidenav h1 {
+    color: #666;
+    font-size: 1.2em;
+    height: 20px;
+    margin-top: 1.2em
+}
+
+.sidenav ul {
+    border-top: 1px solid #FAFAFA;
+    /*background: #EEE url(../img/bgul.gif) repeat-x;*/
+    background: #EEE;
+    margin: 0;
+    padding: 0
+}
+
+.sidenav li {
+    border: 1px solid #FAFAFA;
+    border-top: none;
+    list-style: none;
+    margin: 0
+}
+
+.sidenav li a {
+    color: #777;
+    display: block;
+    font-size: 0.9em;
+    padding: 3px 6px 3px 14px;
+    text-decoration: none
+}
+
+.sidenav li a:hover {
+    color: #111
+}
+
+/* content */
+.content {
+    float: right;
+    width: 520px
+}
+
+.content .item {
+    padding: 6px 12px;
+    border: 1px solid #EEE;
+    background: #FFF;
+    margin-bottom: 8px
+}
+
+.content .descr {
+    color: #333;
+    margin-bottom: 6px
+}
+
+.content li {
+    /*list-style: url(../img/li.gif);*/
+    margin-left: 18px
+}
+
+/* search form */
+form {
+    padding: 0 0 6px 8px
+}
+
+.styled {
+    border: 1px solid #DDD;
+    padding: 4px
+}
+
+.button {
+    /*background: url(../img/search.gif) no-repeat left bottom;*/
+    border: none;
+    height: 27px;
+    width: 27px
+}
+
+/* footer */
+.footer {
+    background: #FFF;
+    border: 1px solid #EEE;
+    color: #666;
+    font-size: 1.1em;
+    margin: 0 auto;
+    text-align: center;
+    width: 720px
+}
+
+.footer a {
+    color: #36C;
+    text-decoration: none
+}
+
+.footer a:hover {
+    color: #06F;
+    text-decoration: underline
+}
+
+.footer .left, .footer .right {
+    padding: 6px 12px
+}
+
+.footer .right, .footer .right a {
+    color: #AAA
+}
+
+.footer .right a:hover {
+    color: #666
+}
+
+/* floats */
+.left {
+    float: left
+}
+
+.right {
+    float: right
+}
+
+.formEdit {
+    padding: 15px;
+
+}
+
+.inputDataOne {
+    width: 200px;
+    display: block;
+    margin-bottom: auto;
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+    outline: #e6e6e6 solid 5px;
+    border: none;
+    padding-left: 10px;
+
+    font: 12pt Arial;
+    color: #535353;
+}
+
+.inputDataOne:focus {
+    width: 200px;
+    height: 28px;
+    outline: #e6e6e6 solid 5px;
+    border: none;
+    padding-left: 10px;
+    margin-top: 5px;
+    font: 12pt Arial;
+    color: #535353;
+}
+
+.rowLabel {
+    color: white;
+    font: 12pt Arial;
+    padding-bottom: 15px;
+    padding-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.degreeLabel {
+    color: white;
+    font: 12pt Arial;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.inputDataDegree {
+    width: 200px;
+    display: block;
+    margin-bottom: auto;
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+    outline: #e6e6e6 solid 5px;
+    border: none;
+    padding-left: 10px;
+    font: 12pt Arial;
+    color: #535353;
+
+}
+
+.inputDataDegree:focus {
+    height: 28px;
+    outline: #e6e6e6 solid 5px;
+    border: none;
+    padding-left: 10px;
+    margin-top: 5px;
+    font: 12pt Arial;
+    color: #535353;
+}
+
+.inputSend {
+    display: block;
+
+    margin-bottom: auto;
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.buttonR {
+    display: block;
+    margin: 20px auto auto auto;
+    border-top: 1px solid #fafafa;
+    background: #316310;
+    background: -webkit-gradient(linear, left top, left bottom, from(#6a6b6b), to(#303131));
+    background: -moz-linear-gradient(top, #2c96cf, #519e16);
+    background: -ms-linear-gradient(top, #2c96cf, #519e16);
+    background: -o-linear-gradient(top, #2c96cf, #519e16);
+    padding: 8px 16px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+    text-shadow: rgba(0, 0, 0, .4) 0 1px 0;
+    color: #ffffff;
+    font-size: 16px;
+    font-family: Georgia, Serif;
+    text-decoration: none;
+    vertical-align: middle;
+}
+
+.buttonR:hover {
+    color: #f7f7f7;
+    background: #00678e;
+    background: -webkit-gradient(linear, left top, left bottom, from(#0095cc), to(#00678e));
+    background: -moz-linear-gradient(top, #0095cc, #00678e);
+    background: -ms-linear-gradient(top, #0095cc, #00678e);
+    background: -o-linear-gradient(top, #0095cc, #00678e);
+}
+
+.buttonR:active {
+    border-top-color: #00adee;
+    background: #00adee;
+}
+
+.buttonFunsc {
+    display: block;
+    margin: 33px 0 33px 5px;
+    border-top: 1px solid #fafafa;
+    background: #316310;
+    background: -webkit-gradient(linear, left top, left bottom, from(#6a6b6b), to(#303131));
+    background: -moz-linear-gradient(top, #2c96cf, #519e16);
+    background: -ms-linear-gradient(top, #2c96cf, #519e16);
+    background: -o-linear-gradient(top, #2c96cf, #519e16);
+    padding: 8px 16px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+    text-shadow: rgba(0, 0, 0, .4) 0 1px 0;
+    color: #ffffff;
+    font-size: 16px;
+    font-family: Georgia, Serif;
+    text-decoration: none;
+    vertical-align: middle;
+}
+
+.buttonFunsc:hover {
+    color: #f7f7f7;
+    background: #00678e;
+    background: -webkit-gradient(linear, left top, left bottom, from(#0095cc), to(#00678e));
+    background: -moz-linear-gradient(top, #0095cc, #00678e);
+    background: -ms-linear-gradient(top, #0095cc, #00678e);
+    background: -o-linear-gradient(top, #0095cc, #00678e);
+}
+
+.buttonFunsc:active {
+    border-top-color: #00adee;
+    background: #00adee;
+}
+
+.divButt {
+    padding: 7px 12px;
+    margin-bottom: 8px;
+    height: 82.38px;
+    border: 1px solid #EEE;
+    background: #FFF;
+}
+
+.trueP {
+    font-size: 1.2em;
+    padding-bottom: 1.2em;
+}
+
+@keyframes animP {
+    from {
+        background-color: rgba(255, 71, 0, 0.24);
+        color: black;
+    }
+    to {
+        background-color: rgba(255, 19, 21, 0.75);
+        color: #000000;
+    }
+}
+
+@-moz-keyframes animP {
+    from {
+        background-color: red;
+    }
+    to {
+        background-color: black;
+    }
+}
+
+@-webkit-keyframes animP {
+    from {
+        background-color: red;
+    }
+    to {
+        background-color: black;
+    }
+}
+
+.falseP {
+    background-color: #ff20004a;
+    color: black;
+    font-size: 1.2em;
+    padding-bottom: 1.2em;
+    animation: animP 2s 1;
+
 }
