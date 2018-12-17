@@ -329,7 +329,7 @@ namesFunctions.push(oddNumbOb);
 
 /* 10) to find maximum divider for all numbers of an array */
 /*
-maxDivider = function () {
+maxDivider = function () {.
 
 }
 namesFunctions.push('maxDivider');
