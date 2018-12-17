@@ -477,8 +477,6 @@ function createButton() {
     html2 += "<p>" + namesFunctions[i].failureDesc + "</p></div>";
 
     document.getElementById('buttons').appendChild(pp).innerHTML = html2;
-
-
   }
 }
 
