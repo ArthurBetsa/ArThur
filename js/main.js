@@ -66,26 +66,6 @@ let resultOuter = function (nameObj) {
   return htmlOut;
 }
 
-//test data
-let testFunc = function () {
-  // let foundId = document.getElementById('testFunc').className = "MyClass";
-  // let rrr = document.getElementById(namesFunctions[0]).childNodes[0].childNodes[5].nodeName;
-  let answer = resultOuter(testFunc);
-
-  let rresultOutput = document.getElementById(testFunc.name).childNodes[0].childNodes[5];
-
-  // resultOuter(testFunc) = rudeRow;
-  // rresultOutput.setAttribute("class", "trueP");
-  rresultOutput.setAttribute("class", "falseP");
-}
-let testFuncOb = {
-  name: "testFunc",
-  buttonDesc: "Тестовая кнока",
-  failureDesc: "Текст тест ошибки",
-  description: "Описание работы Функции"
-};
-namesFunctions.push(testFuncOb);
-
 
 //is array
 let isArr = function () {
