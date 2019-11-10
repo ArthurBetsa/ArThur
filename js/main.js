@@ -1,36 +1,29 @@
 /* 1) to count given degree*/
 
-
 let row = [];
-let getdegree = [];
+let degree = []; // тут можно просто degree, если ты пишешь get, следовательно ожидается что ты хочешь что-то с него взять
 let namesFunctions = [];
 let rudeRow = [];
 let check = true;
 
-
-function battonClick(formRow) {
+function buttonClick(formRow) {
 
   //get data from input
   row = formRow.givenData.value.split(',');
   rudeRow = formRow.givenData.value.split(',');
-  getdegree = formRow.degree.value.split(',');
-  let i;
+  degree = formRow.degree.value.split(',');
 
   // filters
   //check for wrong data
 
   let checkRow = true;
   row.map(function (val) {
-    if (isNaN(val)) {
-      checkRow = false;
-    } else {
-      checkRow = true;
-    }
+    checkRow = !Number.isNaN(val);
   });
 
   let checkDegree = true;
-  for (i = 0; i < getdegree.length; i++) {
-    if (isNaN(getdegree[i])) {
+  for (let i = 0; i < degree.length; i++) {
+    if (Number.isNaN(degree[i])) {
       checkDegree = false;
       break;
     }
@@ -45,140 +38,144 @@ function battonClick(formRow) {
   } else {
     check = true;
     row = row || row[0]++;
-    getdegree = getdegree || getdegree[0]++;
+    degree = degree || degree[0]++;
   }
   // val to a num
-  for (i = 0; i < row.length; i++) {
+  for (let i = 0; i < row.length; i++) {
     row[i] = parseInt(row[i]);
-    getdegree[i] = parseInt(getdegree[i]);
+    degree[i] = parseInt(degree[i]);
   }
-  // remoove NaN
+  // remove NaN
   row = row.filter(Number);
-  getdegree = getdegree.filter(Number);
+  degree = degree.filter(Number);
 }
 
 let resultOuter = function (nameObj) {
   let htmlOut = [];
   let answer = document.getElementById(nameObj.name).childNodes[0].childNodes[1];
   let fail = document.getElementById(nameObj.name).childNodes[0].childNodes[5];
+
   htmlOut.push(answer);
   htmlOut.push(fail);
+
   return htmlOut;
 }
 
-
 //is arrays
 let isArr = function () {
-  battonClick(formRow);
-  let out = resultOuter(isArrOb);
-  if (check === true) {
-    if (row.length < 2) {
+  buttonClick(formRow);
+  let out = resultOuter(isArrObj);
+
+  if (check === true && row.length < 2) {
       out[0].innerHTML = 'Не масив.';
     } else {
-      out[0].innerHTML = "Массив.";
-    }
+    out[0].innerHTML = "Массив.";
   }
-
-
 }
-let isArrOb = {
+
+let isArrObj = {
   name: isArr.name,
   buttonDesc: "Массив",
   failureDesc: "Введите пожалуйста массив.",
   description: "Проверка, являются ли данные массивом."
 };
-namesFunctions.push(isArrOb);
-
+namesFunctions.push(isArrObj);
 
 /* 1) count a numb in a given degree*/
 
 let degreeCount = function () {
-  battonClick(formRow);
-  let out = resultOuter(degreeCountOb);
-  if (check === true) {
-    if (row.length >= 2 || getdegree.length >= 2) {
-      out[1].setAttribute("class", "falseP");
-    } else {
-      let powNumb = Math.pow(row[0] || 0, getdegree[0] || 0);
-      out[0].innerHTML = powNumb;
-      out[1].setAttribute("class", "trueP");
-    }
+  buttonClick(formRow);
+  let out = resultOuter(degreeCountObj);
+
+  if (check === true && row.length >= 2 || degree.length >= 2) {
+    out[1].setAttribute("class", "falseP");
+  } else {
+    out[0].innerHTML = Math.pow(row[0] || 0, degree[0] || 0);
+    out[1].setAttribute("class", "trueP");
   }
 }
-let degreeCountOb = {
+
+let degreeCountObj = {
   name: degreeCount.name,
   buttonDesc: "Степень",
   failureDesc: "Введите пожалуйста по <b>одному</b> числу в каждую строку",
   description: "Возведение заданного числа в заданную степень"
 };
-namesFunctions.push(degreeCountOb);
+namesFunctions.push(degreeCountObj);
 
 
 /* 2)  found number on Fibom  ?*/
-let fibon = function () {
-  battonClick(formRow);
-  let out = resultOuter(fibonOb);
-  if (row.length <= 1 || row.length >= 3 || getdegree.length >= 2) {
+let fibonacci = function () {
+  buttonClick(formRow);
+  let out = resultOuter(fibonacciObj);
+
+  if (row.length <= 1 || row.length >= 3 || degree.length >= 2) {
     out[1].setAttribute("class", "falseP");
   } else {
     let step1 = row[0] || 1;
     let step2 = row[1] || 1;
-    let length = getdegree[0] || 3;
+    let length = degree[0] || 3;
     let a = step1;
     let b = step2;
     let n = length;
     let result = [];
     let i;
+
     for (i = 0; i < n; i++) {
       let c = a + b;
       a = b;
       b = c;
       result.push(c);
     }
+
     out[0].innerHTML = result;
     out[1].setAttribute("class", "trueP");
   }
 }
-let fibonOb = {
-  name: "fibon",
+
+let fibonacciObj = {
+  name: "fibonacci",
   buttonDesc: "Фибоначи",
   failureDesc: "Введите два начальных числа в первое поле ввода и длину во второе.",
   description: "Нахождение числа по фибоначи."
 };
-namesFunctions.push(fibonOb);
+namesFunctions.push(fibonacciObj);
 
 /* 3)  count an array's elements summ */
-let arrSumm = function () {
-  battonClick(formRow);
-  let out = resultOuter(arrSummOb);
+let arrSum = function () {
+  buttonClick(formRow);
+  let out = resultOuter(arrSumObj);
+
   if (row.length <= 1) {
     out[1].setAttribute("class", "falseP");
   } else {
-    let i;
     let answer = 0;
-    for (i = 0; i < row.length; i++) {
+
+    for (let i = 0; i < row.length; i++) {
       answer = answer + row[i];
     }
     out[0].innerHTML = answer;
     out[1].setAttribute("class", "trueP");
   }
 }
-let arrSummOb = {
-  name: "arrSumm",
+
+let arrSumObj = {
+  name: "arrSum",
   buttonDesc: "Сумма чисел",
   failureDesc: "Введите несколько значений в первую строку.",
   description: "Нахождение суммы чисел элементов массива."
 };
-namesFunctions.push(arrSummOb);
+namesFunctions.push(arrSumObj);
 
 /* 4)  sort an array
        4.1) from smaller to bigger
        4.2) from bigger to smaller
  */
-//4.1
+// 4.1
 let toBig = function () {
-  battonClick(formRow);
-  let out = resultOuter(toBigOb);
+  buttonClick(formRow);
+  let out = resultOuter(toBigObj);
+
   if (row.length < 2) {
     out[1].setAttribute("class", "falseP");
   } else {
@@ -190,64 +187,69 @@ let toBig = function () {
     out[1].setAttribute("class", "trueP");
   }
 }
-let toBigOb = {
+
+let toBigObj = {
   name: "toBig",
   buttonDesc: "От меньшего",
   failureDesc: "Введите несколько значений в первое поле.",
   description: "Сортировка данных от меньшего к большему"
 };
-namesFunctions.push(toBigOb);
+namesFunctions.push(toBigObj);
 
-//4.2
+// 4.2
 let toSmall = function () {
-  battonClick(formRow);
-  let out = resultOuter(toSmallOb);
+  buttonClick(formRow);
+  let out = resultOuter(toSmallObj);
   let numbers = row.slice();
+
   numbers.sort(function (a, b) {
     return b - a;
   });
+
   out[0].innerHTML = numbers;
 }
-let toSmallOb = {
+
+let toSmallObj = {
   name: "toSmall",
   buttonDesc: "От большего",
   failureDesc: "Вы ввели некоректные данные.",
   description: "Сортировка данных от большего к меньшему."
 };
-namesFunctions.push(toSmallOb);
+namesFunctions.push(toSmallObj);
 
 /* 5)  arithmetic mean  */
 let arithmeticMean = function () {
-  battonClick(formRow);
-  let out = resultOuter(arithmeticMeanOb);
+  buttonClick(formRow);
+  let out = resultOuter(arithmeticMeanObj);
   let numbers = row.slice();
-  let i;
   let arMean = 0;
-  for (i = 0; i < numbers.length; i++) {
+
+  for (let i = 0; i < numbers.length; i++) {
     arMean = numbers[i] + arMean;
   }
   arMean = arMean / numbers.length;
   out[0].innerHTML = arMean;
 }
-let arithmeticMeanOb = {
+
+let arithmeticMeanObj = {
   name: "arithmeticMean",
   buttonDesc: "Средн.знач.",
   failureDesc: "Вы ввели некоректные данные.",
   description: "Нахождение среднего арифметического значения чисел массива."
 };
-namesFunctions.push(arithmeticMeanOb);
+namesFunctions.push(arithmeticMeanObj);
 
 /* 6)  to count an amount repeat numbers of an array's elements*/
 let repeatNumbers = function () {
-  battonClick(formRow);
-  let out = resultOuter(repeatNumbersOb);
+  buttonClick(formRow);
+  let out = resultOuter(repeatNumbersObj);
   let repeated = row.slice().sort();
   let counter = [];
   let count = 0;
   let numb = [];
   let result = [];
-  let i;
-  for (i = 0; i < repeated.length; i++) {
+
+  for (let i = 0; i < repeated.length; i++) {
     if (repeated[i] !== count) {
       numb.push(repeated[i]);
       counter.push(1);
@@ -256,97 +258,92 @@ let repeatNumbers = function () {
     }
     count = repeated[i];
   }
-  for (i = 0; i < numb.length; i++) {
+
+  for (let i = 0; i < numb.length; i++) {
     count = ' ' + numb[i] + ' (' + counter[i] + ')';
     result.push(count);
   }
 
   out[0].innerHTML = result;
 }
-let repeatNumbersOb = {
+
+let repeatNumbersObj = {
   name: "repeatNumbers",
   buttonDesc: "Повтор. знач.",
   failureDesc: "Введите масив чисел в первое поле.",
   description: "Нахождение повторяющихся значений массива и их количества."
 };
-namesFunctions.push(repeatNumbersOb);
+namesFunctions.push(repeatNumbersObj);
 
 /* 7)  implement the reverse function */
 
 let revFunction = function () {
-  battonClick(formRow);
-  let out = resultOuter(revFunctionOb);
-  let reversed = row.slice().reverse();
-  out[0].innerHTML = reversed;
+  buttonClick(formRow);
+  let out = resultOuter(revFunctionObj);
+  out[0].innerHTML = row.slice().reverse();
 }
-let revFunctionOb = {
+
+let revFunctionObj = {
   name: "revFunction",
   buttonDesc: "Реверс",
   failureDesc: "Введите масив чисел в первое поле.",
   description: "Реверс значений массива."
 };
-namesFunctions.push(revFunctionOb);
+namesFunctions.push(revFunctionObj);
 
 /* 8)  to show odd numbers of an array */
 let oddNumb = function () {
-  battonClick(formRow);
-  let out = resultOuter(oddNumbOb);
-  let i;
+  buttonClick(formRow);
+
+  let out = resultOuter(oddNumbObj);
   let oddnumbers = [];
-  for (i = 0; i < row.length; i++) {
-    if (row[i] % 2 != 0) oddnumbers.push(row[i]);
+
+  for (let i = 0; i < row.length; i++) {
+    if (row[i] % 2 !== 0) oddnumbers.push(row[i]);
   }
+
   out[0].innerHTML = oddnumbers;
 }
-let oddNumbOb = {
+
+let oddNumbObj = {
   name: "oddNumb",
   buttonDesc: "Нечетные",
   failureDesc: "Введите масив чисел в первое поле.",
   description: "Вывод нечетных значений массива."
 };
-namesFunctions.push(oddNumbOb);
-/* 9)  to find en element in an array and implement binar search */
+namesFunctions.push(oddNumbObj);
 
-/* 10) to find maximum divider for all numbers of an array */
-/*
-maxDivider = function () {.
-
-}
-namesFunctions.push('maxDivider');
-*/
 /* 11) to raise array's elements to given degree */
 
 let arrayDegree = function () {
-  battonClick(formRow);
-  let out = resultOuter(arrayDegreeOb);
-  if (getdegree.length >= 2) {
+  buttonClick(formRow);
+  let out = resultOuter(arrayDegreeObj);
+
+  if (degree.length >= 2) {
     out[1].setAttribute("class", "falseP");
   } else {
-    let deg = row.map(val => Math.pow(val, getdegree[0] || 0));
-    out[0].innerHTML = deg;
+    out[0].innerHTML = row.map(val => Math.pow(val, degree[0] || 0));
     out[1].setAttribute("class", "trueP");
   }
 }
-let arrayDegreeOb = {
+
+let arrayDegreeObj = {
   name: "arrayDegree",
   buttonDesc: "Степени",
   failureDesc: "Введите <b>одно</b> значение в поле доп. данных.",
   description: "Возведение значений массива в заданную степень."
 };
-namesFunctions.push(arrayDegreeOb);
+namesFunctions.push(arrayDegreeObj);
 
-
-/* 12) ??? specify */
 /* 13) is an array of palindrome*/
-
-let palindr = function () {
-  battonClick(formRow);
-  let out = resultOuter(palindrOb);
+let palindrome = function () {
+  buttonClick(formRow);
+  let out = resultOuter(palindromeObj);
   let answer;
-  let i;
   let reversed = row.slice().reverse();
-  for (i = 0; i < row.length; i++) {
-    if (reversed[i] != row[i]) {
+
+  for (let i = 0; i < row.length; i++) {
+    if (reversed[i] !== row[i]) {
       answer = 'не палиндром';
       break;
     } else {
@@ -356,101 +353,92 @@ let palindr = function () {
 
   out[0].innerHTML = answer;
 }
-let palindrOb = {
-  name: "palindr",
-  buttonDesc: "Палмндром",
+
+let palindromeObj = {
+  name: "palindrome",
+  buttonDesc: "Палиндром",
   failureDesc: "Введите масив чисел в первое поле.",
   description: "Проверка, является ли данный массив палиндромом."
 };
-namesFunctions.push(palindrOb);
+namesFunctions.push(palindromeObj);
 
 /* 14) to show even numbers of an array */
 let evenNumbers = function () {
-  battonClick(formRow);
-  let out = resultOuter(evenNumbersOb);
+  buttonClick(formRow);
+  let out = resultOuter(evenNumbersObj);
   let evenNumbs = [];
-  let i;
-  for (i = 0; i <= row.length; i++) {
-    if (row[i] % 2 == 0) {
+
+  for (let i = 0; i <= row.length; i++) {
+    if (row[i] % 2 === 0) {
       evenNumbs.push(row[i]);
-    } else {
-      continue;
     }
   }
   out[0].innerHTML = evenNumbs;
 }
-let evenNumbersOb = {
+
+let evenNumbersObj = {
   name: "evenNumbers",
   buttonDesc: "Четные числа",
   failureDesc: "Введите масив чисел в первое поле.",
   description: "Выведение четных чисел массива."
 };
-namesFunctions.push(evenNumbersOb);
+namesFunctions.push(evenNumbersObj);
 
 /* 15) remainder operator
        15.1) array's numbers with remainder*/
-
 let noRemainder = function () {
-  battonClick(formRow);
-  let out = resultOuter(noRemainderOb);
-  if (getdegree.length >= 2) {
+  buttonClick(formRow);
+  let out = resultOuter(noRemainderObj);
+
+  if (degree.length >= 2) {
     out[1].setAttribute("class", "falseP");
   } else {
-    let answer = row.filter(val => val % getdegree[0] == 0);
-    out[0].innerHTML = answer;
+    out[0].innerHTML = row.filter(val => val % degree[0] === 0);
     out[1].setAttribute("class", "trueP");
   }
 }
-let noRemainderOb = {
+
+let noRemainderObj = {
   name: "noRemainder",
   buttonDesc: "Без остатка",
   failureDesc: "Введите <b>одно</b> значение в доп. поле.",
   description: "Введите одно значение в доп. поле на которые данные из масива будут делиться без остатка."
 };
-namesFunctions.push(noRemainderOb);
+namesFunctions.push(noRemainderObj);
 
 /* 16.1 without remainder*/
 
-
 let withRemainder = function () {
-  battonClick(formRow);
-  let out = resultOuter(withRemainderOb);
-  if (getdegree.length >= 2) {
+  buttonClick(formRow);
+  let out = resultOuter(withRemainderObj);
+
+  if (degree.length >= 2) {
     out[1].setAttribute("class", "falseP");
   } else {
-
-
-    let answer = row.filter(val => val % getdegree[0] !== 0);
-    out[0].innerText = answer;
+    out[0].innerText = row.filter(val => val % degree[0] !== 0);
     out[1].setAttribute("class", "trueP");
   }
 }
-let withRemainderOb = {
+
+let withRemainderObj = {
   name: "withRemainder",
   buttonDesc: "Остаток",
   failureDesc: "Введите <b>одно</b> значение в доп. поле.",
   description: "Введите одно значение в доп. поле на которые данные из масива будут делиться с остатком."
 };
-namesFunctions.push(withRemainderOb);
+namesFunctions.push(withRemainderObj);
 /* 17) to put randomly array's elements */
 
-
-//Создание кнопок
+// Создание кнопок
 function createButton() {
-  let i = 0;
-
-  for (i = 0; i < namesFunctions.length; i++) {
+  for (let i = 0; i < namesFunctions.length; i++) {
     let divButt = document.createElement('div');
     divButt.setAttribute("class", "divButt");
 
-    let buttInput = "<input id=\"" + namesFunctions[i].name + "\";" +
-      " class=\"buttonFunsc\" type=\"button\"" +
-      " value=\" " + namesFunctions[i].buttonDesc + " \"" +
-      " onclick=\"" + namesFunctions[i].name + "()\">";
+    document.getElementById('buttOut').appendChild(divButt).innerHTML = `
+    <input id="${namesFunctions[i].name}"; class="buttonFunsc" type="button" value=" ${namesFunctions[i].buttonDesc} "onclick="${namesFunctions[i].name}()">`;
 
-    document.getElementById('buttOut').appendChild(divButt).innerHTML = buttInput;
-
-    let pp = document.createElement('div');
+    let pp = document.createElement('div'); // what is pp?
     pp.setAttribute("id", namesFunctions[i].name);
     let html2 = "<div class=\"item\"> <h1> Вывод резултата </h1>";
     html2 += " <div class=\"descr\">" + namesFunctions[i].description + "</div>\n";
@@ -459,5 +447,3 @@ function createButton() {
     document.getElementById('buttons').appendChild(pp).innerHTML = html2;
   }
 }
-
-
